@@ -1,0 +1,17 @@
+#include <iostream>
+#include "Trie.h"
+
+int main(int argc, const char *argv[])
+{
+
+    Trie *dictionary = new Trie;
+    dictionary->generateDictionary();
+    std::string prefix;
+    std::cout << "Начните вводить: ";
+    std::getline(std::cin, prefix);
+    std::string res;
+    dictionary->getAllWordsByPrefix(dictionary, prefix, res);
+    std::cout << "Варианты слов: " << res << "\n";
+    delete dictionary;
+    return 0;
+}
