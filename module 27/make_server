@@ -1,0 +1,13 @@
+SV_SRC = -std=c++20 Server/main.cpp Server/DBClient/*.cpp Server/ChatCore/*.cpp Server/Socket/Handler/*.cpp Server/Socket/LinuxServer/*.cpp Misc/*.cpp Server/ChatPages/*.cpp Server/Socket/Logger/*.cpp Server/Socket/SVCLI/*.cpp `mysql_config --cflags --libs`
+SV_TARGET = chatserver
+PREFIX = /usr/local/bin
+
+consolechat:
+	mkdir -p bin
+	g++ -std=c++20 -o bin/$(SV_TARGET) $(SV_SRC)
+	
+install:
+	install bin/$(SV_TARGET) $(PREFIX)
+		
+uninstall:
+	rm -rf $(PREFIX)/$(SV_TARGET)	
